@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
+
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
@@ -10,10 +11,12 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 
 public class Hardwaremap {
 
-    DcMotor Leftfront=null; //2
-    DcMotor Rightfront=null; //1
-    DcMotor Leftback=null; //3
-    DcMotor Rightback=null; //0
+    DcMotorEx Leftfront=null; //1
+    DcMotorEx Rightfront=null; //0
+    DcMotorEx Leftback=null; //2
+    DcMotorEx Rightback=null; //3
+
+    DcMotorEx Lift_pulleys =null;
 
     HardwareMap hwp=null;
     //DcMotor arm_motor =null;
@@ -25,13 +28,12 @@ public class Hardwaremap {
         /*Rightback = hwp.get(DcMotorEx.class, "RightBack");
         Leftback = hwp.get(DcMotorEx.class, "LeftBack");
         Rightfront = hwp.get(DcMotorEx.class, "RightFront");*/
-        Leftfront = hwp.get(DcMotor.class, "Leftfront");
-        Rightfront = hwp.get(DcMotor.class, "Rightfront");
-        Leftback = hwp.get(DcMotor.class, "Leftback");
-        Rightback = hwp.get(DcMotor.class, "Rightback");
+        Leftfront = hwp.get(DcMotorEx.class, "Leftfront");
+        Rightfront = hwp.get(DcMotorEx.class, "Rightfront");
+        Leftback = hwp.get(DcMotorEx.class, "Leftback");
+        Rightback = hwp.get(DcMotorEx.class, "Rightback");
 
-
-
+        Lift_pulleys = hwp.get(DcMotorEx.class,"Liftpulleys");
 
 
 
@@ -40,14 +42,24 @@ public class Hardwaremap {
         Rightback.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         Rightfront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
+        Lift_pulleys.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
         //Leftfront1.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         //Leftfront2.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        /*Leftfront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        Leftfront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         Rightfront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         Leftback.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        Rightback.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);*/
+        Rightback.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-        //左前和左后需反转
+        Lift_pulleys.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+        //反转
+        Leftfront.setDirection(DcMotorSimple.Direction.REVERSE);
+        Rightfront.setDirection(DcMotorSimple.Direction.FORWARD);
+        Leftback.setDirection(DcMotorSimple.Direction.REVERSE);
+        Rightback.setDirection(DcMotorSimple.Direction.FORWARD);
+
+        Lift_pulleys.setDirection(DcMotorSimple.Direction.REVERSE);
 
 
         /*arm_motor = hwp.dcMotor.get("arm");
