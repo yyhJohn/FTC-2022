@@ -44,7 +44,7 @@ public class Opmode_player1_2 extends LinearOpMode {
         telehwp.Rightfront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         telehwp.Rightback.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-        telehwp.Lift_pulleys.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+       // telehwp.Lift_pulleys.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
 
         //telehwp.Lift_pulleys.setTargetPosition(0);
@@ -79,13 +79,13 @@ public class Opmode_player1_2 extends LinearOpMode {
             int position3 = telehwp.Leftback.getCurrentPosition();
             int position4 = telehwp.Rightback.getCurrentPosition();
 
-            double Lift_pulleys = telehwp.Lift_pulleys.getCurrentPosition();
+            //double Lift_pulleys = telehwp.Lift_pulleys.getCurrentPosition();
 
             telemetry.addData("Leftfront Position", position1);
             telemetry.addData("Rightfront Position", position2);
             telemetry.addData("Leftback Position", position3);
             telemetry.addData("Rightback Position", position4);
-            telemetry.addData("Lift_pulleys",Lift_pulleys);
+           // telemetry.addData("Lift_pulleys",Lift_pulleys);
             telemetry.update();
 
             /*    p1 += gamepad2.left_stick_x * a;
@@ -117,7 +117,7 @@ public class Opmode_player1_2 extends LinearOpMode {
             //telehwp.Lift_pulleys.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
 
-            telehwp.Lift_pulleys.setPower(gamepad2.right_stick_y);
+           //telehwp.Lift_pulleys.setPower(gamepad2.right_stick_y);
 
             M1= (gamepad1.left_stick_y-(gamepad1.left_stick_x*0.9)-(gamepad1.right_stick_x/2))*MotorMaxspeed;
             M2= (gamepad1.left_stick_y+(gamepad1.left_stick_x*0.9)+(gamepad1.right_stick_x/2))*MotorMaxspeed;
