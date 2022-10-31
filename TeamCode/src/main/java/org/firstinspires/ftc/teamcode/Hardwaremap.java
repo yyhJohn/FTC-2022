@@ -42,7 +42,7 @@ public class Hardwaremap {
         Rightback.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         Rightfront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-        Lift_pulleys.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+       Lift_pulleys.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         //Leftfront1.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         //Leftfront2.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
