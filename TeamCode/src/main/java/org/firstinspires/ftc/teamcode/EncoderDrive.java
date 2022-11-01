@@ -22,8 +22,7 @@ public class EncoderDrive extends LinearOpMode {
 
 
     ElapsedTime runtime = new ElapsedTime();
-    
-    
+
     
     public void encoderDrive(double speed, double leftfrontInches, double rightfrontInches,double rightbackInches,double leftbackInches, double timeoutS) {
         int newLeftfrontTarget;
