@@ -17,7 +17,7 @@ public class AutoBluesideLeft extends LinearOpMode {
     EncoderDrive eg =new EncoderDrive();
 
 
-    static final double ANDYMARK_PER_MOTOR_REV = 1120/6.67;    // eg: ANDYMARK Motor Encoder
+    static final double ANDYMARK_PER_MOTOR_REV = 1120;    // eg: ANDYMARK Motor Encoder
     static final double DRIVE_GEAR_REDUCTION = 1.0;     // This is < 1.0 if geared UP
     static final double WHEEL_DIAMETER_INCHES = 3;     // For figuring circumference
     static final double COUNTS_PER_INCH = (ANDYMARK_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) / (WHEEL_DIAMETER_INCHES * 3.1415);
@@ -92,10 +92,16 @@ public class AutoBluesideLeft extends LinearOpMode {
             // always end the motion as soon as possible.
             // However, if you require that BOTH motors have finished their moves before the robot continues
             // onto the next step, use (isBusy() || isBusy()) in the loop test.
-            while (opModeIsActive() && (runtime.seconds() < timeoutS) && autohwp.Leftfront.isBusy()&& autohwp.Leftback.isBusy() && autohwp.Rightback.isBusy() && autohwp.Rightfront.isBusy()) {
+            while (opModeIsActive() && runtime.seconds() < timeoutS && (autohwp.Leftfront.isBusy()&& autohwp.Leftback.isBusy() && autohwp.Rightback.isBusy() && autohwp.Rightfront.isBusy())) {
                 // Display it for the driver.
                 telemetry.addData("Path1", autohwp.Leftfront.getTargetPosition());
                 telemetry.addData("Path2", autohwp.Leftfront.getCurrentPosition());
+
+                telemetry.addData("Leftfront busy",autohwp.Leftfront.isBusy());
+                telemetry.addData("Leftback busy",autohwp.Leftback.isBusy());
+                telemetry.addData("Rightback busy",autohwp.Rightback.isBusy());
+                telemetry.addData("Rightfront busy",autohwp.Rightfront.isBusy());
+
                 telemetry.update();
             }
             // Stop all motion;
