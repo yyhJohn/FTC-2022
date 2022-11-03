@@ -17,6 +17,8 @@ public class Hardwaremap {
     DcMotorEx Rightback=null; //3
 
     DcMotorEx Lift_pulleys =null;
+    Servo Clip1 = null;
+    Servo Clip2 = null;
 
     HardwareMap hwp=null;
     //DcMotor arm_motor =null;
@@ -35,14 +37,9 @@ public class Hardwaremap {
 
         Lift_pulleys = hwp.get(DcMotorEx.class,"Liftpulleys");
 
+        Clip1 = hwp.servo.get(("Clip1"));
+        Clip2 = hwp.servo.get(("Clip2"));
 
-
-        Leftfront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        Leftback.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        Rightback.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        Rightfront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
-       Lift_pulleys.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         //Leftfront1.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         //Leftfront2.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -53,6 +50,7 @@ public class Hardwaremap {
 
         Lift_pulleys.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
+
         //反转
         Leftfront.setDirection(DcMotorSimple.Direction.REVERSE);
         Rightfront.setDirection(DcMotorSimple.Direction.FORWARD);
@@ -60,6 +58,8 @@ public class Hardwaremap {
         Rightback.setDirection(DcMotorSimple.Direction.FORWARD);
 
         Lift_pulleys.setDirection(DcMotorSimple.Direction.REVERSE);
+        Clip1.setDirection(Servo.Direction.REVERSE);
+        Clip2.setDirection(Servo.Direction.FORWARD);
 
 
         /*arm_motor = hwp.dcMotor.get("arm");

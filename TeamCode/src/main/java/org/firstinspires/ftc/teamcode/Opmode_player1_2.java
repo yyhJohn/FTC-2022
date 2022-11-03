@@ -31,11 +31,17 @@ public class Opmode_player1_2 extends LinearOpMode {
     double M1,M2,M3,M4;
     double MotorMaxspeed=1;//0.7  0.4
 
+    double startPosition1, startPosition2;
+
 
     @Override
     public void runOpMode() throws InterruptedException {
 
         telehwp.init(hardwareMap);
+
+        startPosition1 = telehwp.Clip1.getPosition();
+        startPosition2 = telehwp.Clip2.getPosition();
+
         //telehwp.Leftfront1.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         //telehwp.Leftfront2.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
@@ -45,6 +51,8 @@ public class Opmode_player1_2 extends LinearOpMode {
         telehwp.Rightback.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
        // telehwp.Lift_pulleys.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+
 
 
         //telehwp.Lift_pulleys.setTargetPosition(0);
@@ -174,6 +182,24 @@ public class Opmode_player1_2 extends LinearOpMode {
 
 
             //telehwp.arm_motor.setPower(gamepad1.right_stick_x);
+
+            if (gamepad2.a){
+                telehwp.Clip1.setPosition(0.5);
+                telehwp.Clip2.setPosition(0.5);
+            }
+
+            if (gamepad2.b){
+                telehwp.Clip1.setPosition(0.4);
+                telehwp.Clip2.setPosition(0.4);
+            }
+
+            if (gamepad2.x){
+                telehwp.Clip1.setPosition(0.6);
+                telehwp.Clip2.setPosition(0.6);
+            }
+
+
+
 
         }
 
