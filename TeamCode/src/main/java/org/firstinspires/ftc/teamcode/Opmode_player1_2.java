@@ -118,8 +118,13 @@ public class Opmode_player1_2 extends LinearOpMode {
             telehwp.Rightback.setPower(M4);*/
 
             /*if (gamepad1.x){
-                telehwp.Lift_pulleys.setTargetPosition(10);
-                telehwp.Lift_pulleys.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                telehwp.Lift_pulleys.setPower(-1);
+
+
+            }
+
+            if (gamepad1.y){
+                telehwp.Lift_pulleys.setPower(1);
 
             }*/
             //telehwp.Lift_pulleys.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -189,13 +194,13 @@ public class Opmode_player1_2 extends LinearOpMode {
             }
 
             if (gamepad2.b){
-                telehwp.Clip1.setPosition(0.4);
-                telehwp.Clip2.setPosition(0.4);
+                telehwp.Clip1.setPosition(0.0);
+                telehwp.Clip2.setPosition(0.0);
             }
 
             if (gamepad2.x){
-                telehwp.Clip1.setPosition(0.6);
-                telehwp.Clip2.setPosition(0.6);
+                telehwp.Clip1.setPosition(1);
+                telehwp.Clip2.setPosition(1);
             }
 
 
