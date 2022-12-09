@@ -1,22 +1,9 @@
 package org.firstinspires.ftc.teamcode;
 
 
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorEx;
-import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.PIDCoefficients;
-import com.qualcomm.robotcore.util.ElapsedTime;
-import com.qualcomm.hardware.bosch.BNO055IMU;
-
-import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
-import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
-import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
-import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
-import org.firstinspires.ftc.robotcore.external.navigation.Position;
-import org.firstinspires.ftc.robotcore.external.navigation.Velocity;
 
 @TeleOp(name="player1 and player2")
 public class Opmode_player1_2 extends LinearOpMode {
@@ -47,8 +34,8 @@ public class Opmode_player1_2 extends LinearOpMode {
        // telehwp.Lift_pulleys.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
 
-        //telehwp.Lift_pulleys.setTargetPosition(0);
-        //telehwp.Lift_pulleys.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        telehwp.Lift_pulleys.setTargetPosition(0);
+        telehwp.Lift_pulleys.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
         /*telehwp.Leftfront1.setTargetPosition(0);
         telehwp.Leftfront2.setTargetPosition(0);
@@ -59,11 +46,11 @@ public class Opmode_player1_2 extends LinearOpMode {
         telemetry.addData("Status", "Initialized");
         telemetry.update();
 
-        //急停
-        /*telehwp.Leftfront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        telehwp.Rightfront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        telehwp.Leftback.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        telehwp.Rightback.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);*/
+        //急停BRAKE 漂浮FLOAT
+        telehwp.Leftfront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        telehwp.Rightfront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        telehwp.Leftback.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        telehwp.Rightback.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
 
         waitForStart();
         while (opModeIsActive()){
@@ -117,7 +104,7 @@ public class Opmode_player1_2 extends LinearOpMode {
             //telehwp.Lift_pulleys.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
 
-           //telehwp.Lift_pulleys.setPower(gamepad2.right_stick_y);
+            telehwp.Lift_pulleys.setPower(gamepad2.right_stick_y);
 
             M1= (gamepad1.left_stick_y-(gamepad1.left_stick_x*0.9)-(gamepad1.right_stick_x/2))*MotorMaxspeed;
             M2= (gamepad1.left_stick_y+(gamepad1.left_stick_x*0.9)+(gamepad1.right_stick_x/2))*MotorMaxspeed;
@@ -170,6 +157,13 @@ public class Opmode_player1_2 extends LinearOpMode {
                 telehwp.Rightfront.setPower(-MinS*motorspeed);
                 telehwp.Leftback.setPower(MinS*motorspeed);
                 telehwp.Rightback.setPower(-MinS*motorspeed);
+            }
+
+            if (gamepad2.y){
+                telehwp.Catch.setPosition(0);
+            }
+            if (gamepad2.x){
+                telehwp.Catch.setPosition(1);
             }
 
 

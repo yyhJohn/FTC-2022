@@ -17,6 +17,7 @@ public class Hardwaremap {
     DcMotorEx Rightback=null; //3
 
     DcMotorEx Lift_pulleys =null;
+    Servo   Catch=null;
 
     HardwareMap hwp=null;
     //DcMotor arm_motor =null;
@@ -34,6 +35,7 @@ public class Hardwaremap {
         Rightback = hwp.get(DcMotorEx.class, "Rightback");
 
         Lift_pulleys = hwp.get(DcMotorEx.class,"Liftpulleys");
+        Catch=hwp.get(Servo.class,"Catch");
 
 
 
@@ -43,6 +45,7 @@ public class Hardwaremap {
         Rightfront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
        Lift_pulleys.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
 
         //Leftfront1.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         //Leftfront2.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -60,6 +63,7 @@ public class Hardwaremap {
         Rightback.setDirection(DcMotorSimple.Direction.FORWARD);
 
         Lift_pulleys.setDirection(DcMotorSimple.Direction.REVERSE);
+        Catch.setDirection(Servo.Direction.FORWARD);
 
 
         /*arm_motor = hwp.dcMotor.get("arm");
